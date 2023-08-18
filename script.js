@@ -31,7 +31,7 @@ const deciderFunction = function (secretNumber, guess) {
   }
 };
 
-document.querySelector(".check").addEventListener("click", function () {
+const checker = function () {
   const guess = Number(document.querySelector(".guess").value);
   console.log(guess, typeof guess);
 
@@ -51,8 +51,9 @@ document.querySelector(".check").addEventListener("click", function () {
   } else if (guess < secretNumber) {
     deciderFunction(secretNumber, guess);
   }
-});
-document.querySelector(".again").addEventListener("click", function () {
+};
+
+const playAgain = function () {
   score = 20;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
   displayMessage("Start Guessing...");
@@ -61,4 +62,7 @@ document.querySelector(".again").addEventListener("click", function () {
   document.querySelector(".number").style.width = "15rem";
   document.querySelector("body").style.backgroundColor = "#222";
   document.querySelector(".guess").value = "";
-});
+};
+
+document.querySelector(".check").addEventListener("click", checker);
+document.querySelector(".again").addEventListener("click", playAgain);
